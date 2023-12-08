@@ -65,6 +65,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       username: payload.username,
       roleCodes: payload.roleCodes || [],
       currentRoleCode: payload.currentRoleCode,
+      captcha: payload.captcha,
     };
   }
 }

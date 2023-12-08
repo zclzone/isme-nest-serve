@@ -78,7 +78,7 @@ export class AuthService {
 
   async logout(user: any) {
     if (user.userId) {
-      await Promise.all([this.redisService.del(USER_ACCESS_TOKEN_KEY + ':' + user.userId)]);
+      await Promise.all([this.redisService.del(this.getAccessTokenKey(user))]);
       return true;
     }
     return false;
