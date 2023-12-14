@@ -22,8 +22,9 @@ async function bootstrap() {
       saveUninitialized: true,
     }),
   );
-  await app.listen(8085);
 
-  console.log('🚀 启动成功: http://localhost:8085');
+  await app.listen(process.env.APP_PORT || 8085);
+
+  console.log(`🚀 启动成功: http://localhost:${process.env.APP_PORT}`);
 }
 bootstrap();
