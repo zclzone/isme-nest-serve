@@ -75,9 +75,9 @@ export class PermissionService {
     return true;
   }
 
-  findButtonAndApi(parentId: number) {
+  findButton(parentId: number) {
     return this.permissionRepo.find({
-      where: { parentId, type: In(['BUTTON', 'API']) },
+      where: { parentId, type: In(['BUTTON']) },
     });
   }
 
