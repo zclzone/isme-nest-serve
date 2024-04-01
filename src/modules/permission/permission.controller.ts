@@ -70,9 +70,9 @@ export class PermissionController {
     return this.permissionService.remove(+id);
   }
 
-  @Get('button-and-api/:parentId')
-  findButtonAndApi(@Param('parentId') parentId: string) {
-    return this.permissionService.findButtonAndApi(+parentId);
+  @Get('button/:parentId')
+  findButton(@Param('parentId') parentId: string) {
+    return this.permissionService.findButton(+parentId);
   }
 
   /* 校验 path 存不存在menu资源内  */

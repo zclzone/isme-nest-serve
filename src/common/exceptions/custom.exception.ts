@@ -7,25 +7,19 @@
  **********************************/
 
 import { HttpException, HttpStatus } from '@nestjs/common';
-import * as ErrorCode from './error-code';
-
-type ErrorType = (typeof ErrorCode)[keyof typeof ErrorCode];
-
-function getErrorCode(errType: ErrorType): number {
-  const key = Object.keys(ErrorCode).find((key) => ErrorCode[key] === errType);
-  return key ? +key.split('_')[1] : -1;
-}
+import { ERR } from './error-code';
+import { ErrInfo } from './error-code';
 
 /**
  * 自定义异常类
  */
 export class CustomException extends HttpException {
   protected code: number;
-  constructor(errorCode: ErrorType, message?: string, status?: HttpStatus) {
-    message = message ?? errorCode;
+  constructor(err: ErrInfo, message?: string, status?: HttpStatus) {
+    message = message ?? err.message ?? String(err.code);
     super(message, status ?? HttpStatus.BAD_REQUEST);
-    this.code = getErrorCode(errorCode);
+    this.code = err.code;
   }
 }
 
-export { ErrorCode };
+export { ERR as ErrorCode };
