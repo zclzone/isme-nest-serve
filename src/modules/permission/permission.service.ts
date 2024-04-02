@@ -83,7 +83,7 @@ export class PermissionService {
     const allMenu = await this.permissionRepo.find({
       where: { type: 'MENU' },
     });
-    if (allMenu.some((menu) => pathToRegexp(menu.path).test(path))) return true;
+    if (allMenu.some((menu) => menu.path && pathToRegexp(menu.path).test(path))) return true;
     return false;
   }
 }
