@@ -12,6 +12,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Permission } from './permission.entity';
 import { In, Repository } from 'typeorm';
 import { SharedService } from '@/shared/shared.service';
+import { pathToRegexp } from 'path-to-regexp';
 
 @Injectable()
 export class PermissionService {
@@ -82,10 +83,10 @@ export class PermissionService {
   }
 
   async validateMenuPath(path: string) {
-    const findMenu = await this.permissionRepo.findOne({
-      where: { path: path, type: 'MENU' },
+    const allMenu = await this.permissionRepo.find({
+      where: { type: 'MENU' },
     });
-    if (findMenu) return true;
+    if (allMenu.some((menu) => pathToRegexp(menu.path).test(path))) return true;
     return false;
   }
 }
