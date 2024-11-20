@@ -12,5 +12,10 @@
   },
   "files.associations": {
     "*.env.*": "dotenv"
+  },
+  "workbench.colorCustomizations": {
+    "activityBar.background": "#481951",
+    "titleBar.activeBackground": "#652371",
+    "titleBar.activeForeground": "#FEFCFE"
   }
 }

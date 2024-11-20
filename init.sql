@@ -161,3 +161,21 @@ INSERT INTO `user_roles_role` VALUES (1, 1);
 INSERT INTO `user_roles_role` VALUES (1, 2);
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+-- ----------------------------
+-- Table structure for dict
+-- ----------------------------
+DROP TABLE IF EXISTS `dict`;
+CREATE TABLE `dict` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `code` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
+  `dictKey` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `dictValue` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+  `sort` int NOT NULL DEFAULT '0',
+  `parentId` int NOT NULL DEFAULT '0',
+  `remark` varchar(255) COLLATE utf8mb4_general_ci NOT NULL DEFAULT '',
+  `enable` tinyint NOT NULL DEFAULT '1',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=29 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci ROW_FORMAT=DYNAMIC;
+
+SET FOREIGN_KEY_CHECKS = 1;

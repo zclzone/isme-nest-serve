@@ -12,6 +12,7 @@ import { ConfigModule } from '@nestjs/config';
 import { UserModule } from './modules/user/user.module';
 import { PermissionModule } from './modules/permission/permission.module';
 import { RoleModule } from './modules/role/role.module';
+import { DictModule } from './modules/dict/dict.module';
 import { AuthModule } from './modules/auth/auth.module';
 
 @Module({
@@ -26,7 +27,7 @@ import { AuthModule } from './modules/auth/auth.module';
     PermissionModule,
     RoleModule,
     AuthModule,
-
+    DictModule,
     SharedModule,
   ],
 })
