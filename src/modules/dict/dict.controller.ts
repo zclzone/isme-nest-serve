@@ -6,17 +6,7 @@
  * Copyright © 2023 Ronnie Zhang(大脸怪) | https://isme.top
  **********************************/
 
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Patch,
-  Param,
-  Delete,
-  UseGuards,
-  Request,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
 import { DictService } from './dict.service';
 import { JwtGuard } from '@/common/guards';
 import { Roles } from '@/common/decorators/roles.decorator';
@@ -28,7 +18,7 @@ export class DictController {
   constructor(private readonly dictService: DictService) {}
 
   @Get('tree')
-  findDictTree(@Request() req: any) {
+  findDictTree() {
     return this.dictService.findDictTree();
   }
 

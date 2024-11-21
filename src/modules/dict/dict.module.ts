@@ -11,8 +11,6 @@ import { DictService } from './dict.service';
 import { DictController } from './dict.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Dict } from './dict.entity';
-import { Permission } from '@/modules/permission/permission.entity';
-import { User } from '@/modules/user/user.entity';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Dict])],
