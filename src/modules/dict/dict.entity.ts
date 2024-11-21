@@ -6,6 +6,7 @@
  * Copyright © 2023 Ronnie Zhang(大脸怪) | https://isme.top
  **********************************/
 
+import { Expose } from 'class-transformer';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
@@ -25,12 +26,14 @@ export class Dict {
   @Column({ length: 255 })
   dictValue: string;
 
-  @Column({ default: true })
-  enable: boolean;
-
   @Column({ default: 0 })
   sort: number;
 
   @Column({ default: '' })
   remark: string;
+
+  @Expose()
+  get fullName(): string {
+    return `${this.code} ${this.dictValue}`;
+  }
 }
