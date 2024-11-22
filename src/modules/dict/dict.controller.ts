@@ -37,21 +37,21 @@ export class DictController {
   @Post()
   @Roles('SUPER_ADMIN')
   @UseGuards(PreviewGuard)
-  addUser(@Body() dict: CreateDictDto) {
+  addDict(@Body() dict: CreateDictDto) {
     return this.dictService.create(dict);
   }
 
   @Patch(':id')
   @Roles('SUPER_ADMIN')
   @UseGuards(PreviewGuard)
-  updateUser(@Param('id') id: number, @Body() dict: CreateDictDto) {
+  updateDict(@Param('id') id: number, @Body() dict: CreateDictDto) {
     return this.dictService.update(id, dict);
   }
 
   @Delete(':id')
   @Roles('SUPER_ADMIN')
   @UseGuards(PreviewGuard)
-  removeUser(@Param('id') id: number) {
+  removeDict(@Param('id') id: number) {
     return this.dictService.remove(id);
   }
 }

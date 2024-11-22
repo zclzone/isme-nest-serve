@@ -37,8 +37,8 @@ export class DictService {
     if (existDict && dict.parentId == 0)
       throw new CustomException(ErrorCode.ERR_11006, '字典编号已存在，不可重复添加');
 
-    const newUser = this.dictRepo.create(dict);
-    await this.dictRepo.save(newUser);
+    const newDict = this.dictRepo.create(dict);
+    await this.dictRepo.save(newDict);
 
     return true;
   }

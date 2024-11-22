@@ -31,9 +31,4 @@ export class Dict {
 
   @Column({ default: '' })
   remark: string;
-
-  @Expose()
-  get fullName(): string {
-    return `${this.code} ${this.dictValue}`;
-  }
 }
