@@ -31,7 +31,10 @@ export class AuthController {
       return this.authService.login(req.user, req.session?.code);
     }
     // 判断验证码是否正确
-    if (req.session?.code?.toLocaleLowerCase() !== body.captcha?.toLocaleLowerCase()) {
+    if (
+      !req.session?.code ||
+      req.session?.code?.toLocaleLowerCase() !== body.captcha?.toLocaleLowerCase()
+    ) {
       throw new CustomException(ErrorCode.ERR_10003);
     }
     return this.authService.login(req.user, req.session?.code);
