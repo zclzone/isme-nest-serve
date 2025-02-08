@@ -22,7 +22,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     protected configService: ConfigService,
     private redisService: RedisService,
     private userService: UserService,
-    private anthService: AuthService,
+    private authService: AuthService,
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
@@ -45,17 +45,17 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     // 从请求头中提取JWT
     const reqToken = ExtractJwt.fromAuthHeaderAsBearerToken()(req);
     // 从Redis中获取用户访问令牌
-    const accessToken = await this.redisService.get(this.anthService.getAccessTokenKey(payload));
+    const accessToken = await this.redisService.get(this.authService.getAccessTokenKey(payload));
 
     // 如果请求令牌不等于访问令牌
     if (reqToken !== accessToken) {
-      this.redisService.del(this.anthService.getAccessTokenKey(payload));
+      this.redisService.del(this.authService.getAccessTokenKey(payload));
       throw new HttpException(ErrorCode.ERR_11002, HttpStatus.UNAUTHORIZED);
     }
 
     // 延长token过期时间
     this.redisService.set(
-      this.anthService.getAccessTokenKey(payload),
+      this.authService.getAccessTokenKey(payload),
       accessToken,
       ACCESS_TOKEN_EXPIRATION_TIME,
     );
